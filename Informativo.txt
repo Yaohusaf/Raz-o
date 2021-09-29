@@ -1,8 +1,9 @@
-29/09/2021 - 11:52h
+29/09/2021 - 14:042h
 Atenção!!!
 
-Mercado em força de Alta muito intensa. 
-Procurar não entrar vendendo mesmo em sinais de Baixa.
-Outra observação seria não "pegar o Bonde andando", ou seja, assim que perceber algum candles muito grande, não entrar na diração para aonde ele estiver indo, pois a esta altura ele já desceu muito e a qualquer momento o preço poderá retornar, e assim dar prejuízo.
-O Sistema ajuda, mas ele não poderá fazer milagres. A responsabilidade de ganho ou perdas é somente do operador, e seguindo as regras, não dará chances para prejuízos.
-As Linhas de Murrey estão muito espaçadas, com mais de 800 ponto entre elas. Este pode ser um indício de Mercado forte em sua tendência, pois se as linhas estão mais distantes das outras, o caminho fica livre para o Preço subir ou descer mais a vontade. Quando isto acontece, podem ocorrer as chamada violinadas, movimentos do preço mais bruscos, produzindo perdas mais rápidas ou ganhos mais rápidos.
+Pessoal, uma dica muito importante...
+A prioridade para ser considerada uma decisão de entrada na operação é e vai ser sempre as linhas de Murrey...As linhas coloridas no gráfico.
+se uma mensagem do Robô aconselhar Comprar e em cima do Preço atual estiver uma linha próxima, não obedeçam ao Robô, esperem uma dica inversa, que seria uma dica de Venda.
+O Mercado costuma obedecer muito essas linhas, criando resistências na passagem do Preço.
+
+Ou seja, dêem preferência as entradas sempre perto da linhas de Murrey, esperando reversão do Preço...Quando o Preço se aproxima de uma dessas linhas, ele tende e ter dificuldade de passar, e acaba por vezes retornando, é aí que nós entramos, na reversão, mas tb é importante esperar o sinal do Robô confirmando a reversão.
