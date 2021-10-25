@@ -1,7 +1,11 @@
 Depois do Pregão têm Atualizações.
 
 Melhoramentos.
+Áres com linhas de percentual mais eficazes do que Murrey.
+Entradas mais recomendadas ao atingir a linha de cima para baixo com uma operação de COMPRA.
+Entradas mais recomendadas ao atingir a linha de baixo para cima com uma operação de VENDA.
+As linha de percentual de Mercado tem se demonstrado extremamente ceteiras.
 
+Todas usando as teclas de atalho CTRL + SHIFT + C ou V. Compra ou Venda.
 É só chamar.
-
 Bons treinos.
