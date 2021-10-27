@@ -1,11 +1,11 @@
 Depois do Pregão têm Atualizações.
 
-Melhoramentos.
-Áres com linhas de percentual mais eficazes do que Murrey.
-Entradas mais recomendadas ao atingir a linha de cima para baixo com uma operação de COMPRA.
-Entradas mais recomendadas ao atingir a linha de baixo para cima com uma operação de VENDA.
-As linhas de percentual de Mercado tem se demonstrado extremamente certeiras.
+Sugestão: Sempre que o Robô anunciar algum padrão de reversão do Preço, e estiver bem 
+perto ou em cima de uma das linhas de percentual (vermelha , verde ou amarela) ou de
+Pivot Point (Linhas roxas), entrar com 1 x 15...E se precisar do PAN, segue a mesma dica.
+O segredo é saber a hora certa de se fazr o PAN quando precisar.
+Quando os candles estiverem enfraquecendo no tamanho, é hora de ficar atento, pois eles estarão perto de uma dessas
+linhas, e quando o Robô anunciar a reversão, tem que verificar no gráfico da Plataforma
+se a cor do candle realmente é o padrão anunciado pelo Robô. E aí é só fazer o PAN.
 
-Todas usando as teclas de atalho CTRL + SHIFT + C ou V. Compra ou Venda.
-É só chamar.
 Bons treinos.
