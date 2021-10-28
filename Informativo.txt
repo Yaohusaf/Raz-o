@@ -1,10 +1,7 @@
-Pequena ateração no Sistema.
+Mais uma pequena ateração no Sistema.
 
-Agora teremos a opção SM-PAN, Smart PAN, que quando habilitada nos dará mais segurança ao aplicar o recurso do PAN.
-Se ao aplicar o PAN e o Robô não proceder com a Ordem, será devido ao SM-PAN ativado. A função dele é de monitorar
-o momento correto do envio do PAN, em quanto a imagem do LIVRE PAN estiver impressa na tela o envio da Ordem do PAN
-será executado, caso contrário o PAN será negado.
+A legenda de cores foi modificada. Já não vai existir a cor para "Exaustão", essa se transformou em "Baixa".
 
-Atualização daqui à pouco.
+Atualização daqui à pouco depois do Pregão.
 
 Bons treinos.
