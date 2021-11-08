@@ -1,11 +1,4 @@
-Mais uma pequena ateração no Sistema.
-
-Quem quiser atualizar, pode chamar a qualquer hora.
-
-Deverá entrar em andamento um módulo especial para Simulação. 
-Este módulo saerá incluído no Sistema afim de possibilitar o treinamento 
-em qualquer hora ou dia que se quiser fazer treinos, sem depender do Mercado
-estar disponípivel. Ainda é um projeto, se tudo der certo ainda este mês teremos 
-este recurso no Sistema.
+Dica: Podem diminuir a Amplitude para 40. Fica mais rápido e
+não fará diferença.
 
 Bons treinos.
