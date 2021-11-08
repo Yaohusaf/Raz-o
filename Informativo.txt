@@ -1,7 +1,11 @@
 Mais uma pequena ateração no Sistema.
 
-A legenda de cores foi modificada. Já não vai existir a cor para "Exaustão", essa se transformou em "Baixa".
+Quem quiser atualizar, pode chamar a qualquer hora.
 
-Atualização daqui à pouco depois do Pregão.
+Deverá entrar em andamento um módulo especial para Simulação. 
+Este módulo saerá incluído no Sistema afim de possibilitar o treinamento 
+em qualquer hora ou dia que se quiser fazer treinos, sem depender do Mercado
+estar disponípivel. Ainda é um projeto, se tudo der certo ainda este mês teremos 
+este recurso no Sistema.
 
 Bons treinos.
