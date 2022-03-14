@@ -1,4 +1,8 @@
-Nos dias de Carnaval não haverá movimentação no Mercado Financeiro.
-Retornando no dia 2 de Março.
+Hoje devemos ter mais alterações.
 
-Bons treinos.
+- Incluídas duas médias móveis no gráfico de 5 minutos para ajudar no acionamento dos botões de Compra e Venda.
+estas médias serão de 3 períodos representadas por linhas brancas, quando o preço bater
+na média de cima, aciona-se o botão de Venda, se for o caso.
+E quando o preço bater na média de baixo, aciona-se o botão de Compra, se for o caso.
+
+Bons treinos e bons trades.
