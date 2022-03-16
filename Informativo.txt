@@ -1,8 +1,9 @@
-Hoje devemos ter mais alterações.
+Ontem numa operação que precisei de acionar um PAN, o sistema travou as
+teclas de atalho, e tive que fazer manualmente o PAN.
+Caso isto aconteça, mantenham a calma e façam manualmente
+dentro da plataforma.
 
-- Incluídas duas médias móveis no gráfico de 5 minutos para ajudar no acionamento dos botões de Compra e Venda.
-estas médias serão de 3 períodos representadas por linhas brancas, quando o preço bater
-na média de cima, aciona-se o botão de Venda, se for o caso.
-E quando o preço bater na média de baixo, aciona-se o botão de Compra, se for o caso.
+Todos os sistemas estão sujeitos a penes, espero que não seja
+recorrente o que houve ontem, mas se acontecer, já sabem como agir.
 
-Bons treinos e bons trades.
+Bons trades e bons treinos.
