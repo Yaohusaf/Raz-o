@@ -1,9 +1,6 @@
-Ontem numa operação que precisei de acionar um PAN, o sistema travou as
-teclas de atalho, e tive que fazer manualmente o PAN.
-Caso isto aconteça, mantenham a calma e façam manualmente
-dentro da plataforma.
-
-Todos os sistemas estão sujeitos a penes, espero que não seja
-recorrente o que houve ontem, mas se acontecer, já sabem como agir.
+Algumas pequenas alterações estão sendo feitas dentro do Sistema.
+Como vc´s estão operando com o Robô no seu dia a dia, caso tenham 
+alguma sugstão de melhoras, me envie, será analisada e avaliada, se for viável
+estaremos incluindo dentro dos recusros já existentes.
 
 Bons trades e bons treinos.
