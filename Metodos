@@ -1,3 +1,3 @@
-O primeiro Método operacional consiste em utilizar os Botões de Compra ou Venda no topo da tela principal para a entrada nas operações.
-Este procedimento irá fazer com que o Robô busque o ponto ideal para a entrada nas operações. Assim que um dos Botões for ativado, só dependerá do Robô entrar
-na próxima operação, e o fechamento poderá ser feito de forma autônoma ou de forma manual através das teclas de atalho do Sistema.
+O primeiro Método operacional consiste em utilizar os Botões de Compra ou Venda no topo da tela principal para a entrada nas operações. Este procedimento irá fazer
+com que o Robô busque o ponto ideal para a entrada nas operações se utilizando de pontos de Fibonacci específicos e préconfigurados. Assim que um dos Botões for
+ativado, só dependerá do Robô entrar na próxima operação, e o fechamento poderá ser feito de forma autônoma ou de forma manual através das teclas de atalho do Sistema.
