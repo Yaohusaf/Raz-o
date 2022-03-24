@@ -11,7 +11,11 @@ O Robô alerta 1 PAN, espere o momento certo para o acionamento, e quando o mome
 nesse caso se ele alertar 1 PAN, acione 1 somente, se alertar 2 PAN´s, acione 2 PAN´s, e assim até o terceiro PAN.
 
 
-O segundo Método consiste em utilizar as teclas de atalho para Compra e Venda ao invés de acionar os Botões de Compra e Venda como se faz no primeiro método.
+O segundo Método consiste em utilizar as teclas de atalho para Compra e Venda ao invés de acionar os Botões de Compra e Venda como se faz no primeiro método. A diferença
+aqui é que se está usando as teclas de atalho, e o Robô considerará os ticks gain distinto do ticks gain do primeiro Método, e as entradas serõa instantâneas
+e o Robô passará a trabalhar como Trade de Alvo, executando ao invés de trade de scalper, o trade de mais longa duração com o intuíto de se pegar um lucro maior na
+operação. Em Configurações poderá ser definido a quantidade de ticks gain para cada caso. 
+
 
 
 
