@@ -28,4 +28,4 @@ exibindo em sua placa Estrutura Neutra.
 
 Obs4.: Opere sempre do início do Mercado até o horário do meio dia, e se insistir por conta da boa volatilidade do Mercado, vá até no máximo às 14 horas e depois pare
 atingindo sua meta diária ou não. Na conta Real ordens OCO terão que ser criadas para cada Método, se usar o primeiro método use ticks mais baixos, e se usar o segundo,
-use ticks mais altos, a sugestão para os ticks de Trades de Alvo é para 20 ticks. E para trdes de Scalper, 5 ticks.
+use ticks mais altos, a sugestão para os ticks de Trades de Alvo é para 20 ticks. E para Trades de Scalper, 5 ticks.
