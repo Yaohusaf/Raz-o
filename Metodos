@@ -1,3 +1,6 @@
-O primeiro Método operacional consiste em utilizar os Botões de Compra ou Venda no topo da tela principal para a entrada nas operações. Este procedimento irá fazer
-com que o Robô busque o ponto ideal para a entrada nas operações se utilizando de pontos de Fibonacci específicos e préconfigurados. Assim que um dos Botões for
-ativado, só dependerá do Robô entrar na próxima operação, e o fechamento poderá ser feito de forma autônoma ou de forma manual através das teclas de atalho do Sistema.
+O primeiro Método operacional consiste em utilizar os Botões de Compra ou de Venda no topo da tela principal para a entrada nas operações. Este procedimento irá fazer
+com que o Robô busque o ponto ideal para a entrada nas operações sê utilizando de pontos específicos de Fibonacci e préconfigurados. Assim que um dos Botões for
+ativado, só dependerá do Robô entrar na próxima operação, e o fechamento poderá ser feito de forma autônoma ou então de forma manual através das teclas de atalho do Sistema.
+Obs.: Nesse caso podemos ter a opção de "Quero OCO" marcada em Configurações ou não. Quando esta opção está marcada, o Robô não fechará a operação na Plataforma, deixando
+esta tarefa para a orddem OCO colocada na estratégia da Plataforma. E quando esta opção estiver desmarcada, o Robô fechará com o clique do mouse no botão de fechamento
+da Plataforma automaticamente.
