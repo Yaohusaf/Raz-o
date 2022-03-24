@@ -10,12 +10,12 @@ necessário fazer. Aconselha-se para uma boa conduta operacional não economizar
 Robô alerta 1 PAN, espere o momento certo para o acionamento, e quando o momento certo chegar, acione a quantidade de PAN´s alertados pelo Robô, um atrás do outro. E
 nesse caso se ele alertar 1 PAN, acione 1 somente, se alertar 2 PAN´s, acione 2 PAN´s, e assim até o terceiro PAN.
 
-
 O SEGUNDO MÉTODO operacional consiste em utilizar as teclas de atalho para Compra e Venda ao invés de acionar os Botões de Compra e Venda como se faz no primeiro método. A diferença
 aqui é que se está usando as teclas de atalho, e o Robô considerará os ticks gain distinto dos ticks gain do primeiro Método, e as entradas serão instantâneas
 e o Robô passará a trabalhar como Trade de Alvo ao invés de Trade de Scalper, um trade de mais longa duração com o intuito de se construir um lucro maior na operação.
 Em Configurações ("SG de Trade Alvo" e "Ticks P/ Stop Gain") poderão ser definidos a quantidade de ticks gain para cada caso. Trades de alvo costumam ser mais demorados, mas
-em compensação são mais econômicos na cobrança de taxas, e consequentemente mais lucrativos.
+em compensação são mais econômicos na cobrança de taxas, e consequentemente mais lucrativos. Na conta Real ordens OCO terão que ser criadas para cada Método, se usar
+o primeiro método use ticks mais baixos, e se usar o 
 
 Obs2.: Nos dois Métodos de utilização, ao se sentir desconfortável com o lucro entrando, mas sentindo que o mercado pode mudar de rota a qualquer momento, aconselha-se a fechar a operação
 manualmente usando as teclas de atalho, e sempre observe os pivôs tanto no gráfico do Robô quanto no gráfico da Plataforma, se forem colocados pivôs adicionais. E sempre
@@ -27,4 +27,5 @@ de estrutura formada, ora ele se apresentará como Estrutura de Alta, ora se apr
 exibindo em sua placa Estrutura Neutra.
 
 Obs4.: Opere sempre do início do Mercado até o horário do meio dia, e se insistir por conta da boa volatilidade do Mercado, vá até no máximo às 14 horas e depois pare
-atingindo sua meta diária ou não.
+atingindo sua meta diária ou não. Na conta Real ordens OCO terão que ser criadas para cada Método, se usar o primeiro método use ticks mais baixos, e se usar o segundo,
+use ticks mais altos, a sugestão para os ticks de Trades de Alvo é para 20 ticks. E para trdes de Scalper, 5 ticks.
