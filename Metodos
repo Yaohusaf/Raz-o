@@ -4,3 +4,9 @@ ativado, só dependerá do Robô entrar na próxima operação, e o fechamento p
 Obs.: Nesse caso podemos ter a opção de "Quero OCO" marcada em Configurações ou não. Quando esta opção está marcada, o Robô não fechará a operação na Plataforma, deixando
 esta tarefa para a orddem OCO colocada na estratégia da Plataforma. E quando esta opção estiver desmarcada, o Robô fechará com o clique do mouse no botão de fechamento
 da Plataforma automaticamente, sempre observando a quantidade de Ticks para Stop Gains definidos em Configurações.
+
+A utilização do recurso do PAN é antecedida por alertas do Robô. O Robô alerta até 3 PAN´s, mas o operador tem livre escolha para fazer a quantidade de PAN´s que achar
+necessário fazer. Aconselha-se para uma boa conduta operacional não economizar o acionamento dos 3 PAN´s que poderão ser alertados no decorrer da operação aberta. Se o
+O Robô alerta 1 PAN, espere o momento certo para o acionamento, e quando o momento certo chegar, acione a quantidade de PAN´s alertados pelo Robô, um atrás do outro.
+
+
