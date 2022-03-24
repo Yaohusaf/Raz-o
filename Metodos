@@ -2,7 +2,7 @@ O primeiro Método operacional consiste em utilizar os Botões de Compra ou de V
 com que o Robô busque o ponto ideal para a entrada nas operações sê utilizando de pontos específicos de Fibonacci e préconfigurados. Assim que um dos Botões for
 ativado, só dependerá do Robô entrar na próxima operação, e o fechamento poderá ser feito de forma autônoma ou então de forma manual através das teclas de atalho do Sistema.
 Obs1.: Nesse caso podemos ter a opção de "Quero OCO" marcada em Configurações ou não. Quando esta opção está marcada, o Robô não fechará a operação na Plataforma, deixando
-esta tarefa para a orddem OCO colocada na estratégia da Plataforma. E quando esta opção estiver desmarcada, o Robô fechará com o clique do mouse no botão de fechamento
+esta tarefa para a ordem OCO colocada na estratégia da Plataforma. E quando esta opção estiver desmarcada, o Robô fechará com o clique do mouse no botão de fechamento
 da Plataforma automaticamente, sempre observando a quantidade de Ticks para Stop Gains definidos em Configurações.
 
 A utilização do recurso do PAN é antecedida por alertas do Robô. O Robô alerta até 3 PAN´s, mas o operador tem livre escolha para fazer a quantidade de PAN´s que achar
@@ -13,7 +13,7 @@ nesse caso se ele alertar 1 PAN, acione 1 somente, se alertar 2 PAN´s, acione 2
 
 O segundo Método consiste em utilizar as teclas de atalho para Compra e Venda ao invés de acionar os Botões de Compra e Venda como se faz no primeiro método. A diferença
 aqui é que se está usando as teclas de atalho, e o Robô considerará os ticks gain distinto dos ticks gain do primeiro Método, e as entradas serão instantâneas
-e o Robô passará a trabalhar como Trade de Alvo ao invés de trade de scalper, um trade de mais longa duração com o intuíto de se pegar um lucro maior na operação.
+e o Robô passará a trabalhar como Trade de Alvo ao invés de trade de scalper, um trade de mais longa duração com o intuito de se pegar um lucro maior na operação.
 Em Configurações ("SG de Trade Alvo" e "Ticks P/ Stop Gain") poderá ser definido a quantidade de ticks gain para cada caso. Trades de alvo costumam ser mais demorados, mas
 em compensação são mais econômicos na cobrança de taxas, e consequentemente mais lucrativos.
 
