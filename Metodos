@@ -3,4 +3,4 @@ com que o Robô busque o ponto ideal para a entrada nas operações sê utilizan
 ativado, só dependerá do Robô entrar na próxima operação, e o fechamento poderá ser feito de forma autônoma ou então de forma manual através das teclas de atalho do Sistema.
 Obs.: Nesse caso podemos ter a opção de "Quero OCO" marcada em Configurações ou não. Quando esta opção está marcada, o Robô não fechará a operação na Plataforma, deixando
 esta tarefa para a orddem OCO colocada na estratégia da Plataforma. E quando esta opção estiver desmarcada, o Robô fechará com o clique do mouse no botão de fechamento
-da Plataforma automaticamente.
+da Plataforma automaticamente, sempre observando a quantidade de Ticks para Stop Gains definidos em Configurações.
