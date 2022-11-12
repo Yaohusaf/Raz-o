@@ -1,31 +1,4 @@
-O PRIMEIRO MÉTODO operacional consiste em utilizar os Botões de Compra ou de Venda no topo da tela principal para a entrada nas operações. Este procedimento irá fazer
-com que o Robô busque o ponto ideal para a entrada nas operações sê utilizando de pontos específicos de Fibonacci e préconfigurados. Assim que um dos Botões for
-ativado, só dependerá do Robô entrar na próxima operação, e o fechamento poderá ser feito de forma autônoma ou então de forma manual através das teclas de atalho do Sistema.
-Obs1.: Nesse caso podemos ter a opção de "Quero OCO" marcada em Configurações ou não. Quando esta opção está marcada, o Robô não fechará a operação na Plataforma, deixando
-esta tarefa para a ordem OCO colocada na estratégia da Plataforma. E quando esta opção estiver desmarcada, o Robô fechará com o clique do mouse no botão de fechamento
-da Plataforma automaticamente, sempre observando a quantidade de "Ticks P/ Stop Gain" definidos em Configurações.
-
-A utilização do recurso do PAN é antecedida por alertas do Robô. O Robô alerta até 3 PAN´s, mas o operador tem livre escolha para fazer a quantidade de PAN´s que achar
-necessário fazer. Aconselha-se para uma boa conduta operacional não economizar o acionamento dos 3 PAN´s que poderão ser alertados no decorrer da operação aberta. Se o
-Robô alerta 1 PAN, espere o momento certo para o acionamento, e quando o momento certo chegar, acione a quantidade de PAN´s alertados pelo Robô, um atrás do outro. E
-nesse caso se ele alertar 1 PAN, acione 1 somente, se alertar 2 PAN´s, acione 2 PAN´s, e assim até o terceiro PAN.
-
-O SEGUNDO MÉTODO operacional consiste em utilizar as teclas de atalho para Compra e Venda ao invés de acionar os Botões de Compra e Venda como se faz no primeiro método. A diferença
-aqui é que se está usando as teclas de atalho, e o Robô considerará os ticks gain distinto dos ticks gain do primeiro Método, e as entradas serão instantâneas
-e o Robô passará a trabalhar como Trade de Alvo ao invés de Trade de Scalper, um trade de mais longa duração com o intuito de se construir um lucro maior na operação.
-Em Configurações ("SG de Trade Alvo" e "Ticks P/ Stop Gain") poderão ser definidos a quantidade de ticks gain para cada caso. Trades de alvo costumam ser mais demorados, mas
-em compensação são mais econômicos na cobrança de taxas, e consequentemente mais lucrativos. Na conta Real ordens OCO terão que ser criadas para cada Método, se usar
-o primeiro método use ticks mais baixos, e se usar o 
-
-Obs2.: Nos dois Métodos de utilização, ao se sentir desconfortável com o lucro entrando, mas sentindo que o mercado pode mudar de rota a qualquer momento, aconselha-se a fechar a operação
-manualmente usando as teclas de atalho, e sempre observe os pivôs tanto no gráfico do Robô quanto no gráfico da Plataforma, se forem colocados pivôs adicionais. E sempre
-respeite os padrões de reversão através da leitura de candles para uma melhor chance de sucesso com o acionamento dos PAN´s.
-
-Obs3.: Vá sempre de acordo com a frase do Robô, se o Mercado estiver caindo, não abra operações de Compra, se estiver subindo, não abra operações de Venda. A mensagem do
-Robô impressa no topo superior direito da tela é para ser respeitada. E o semáforo também pode ser usado para orientação da direção do Mercado, ele exibe um breve momento
-de estrutura formada, ora ele se apresentará como Estrutura de Alta, ora se apresnetará como Estrutura de Baixa, e por algumas vezes expressará Mercado consolidado
-exibindo em sua placa Estrutura Neutra.
-
-Obs4.: Opere sempre do início do Mercado até o horário do meio dia, e se insistir por conta da boa volatilidade do Mercado, vá até no máximo às 14 horas e depois pare
-atingindo sua meta diária ou não. Na conta Real ordens OCO terão que ser criadas para cada Método, se usar o primeiro método use ticks mais baixos, e se usar o segundo,
-use ticks mais altos, a sugestão para os ticks de Trades de Alvo é para 20 ticks. E para Trades de Scalper, 5 ticks.
+1 – Abrindo a Plataforma e depois o Robô, sempre nesta sequência. Após isso, ir na Aba do Ativo WDOFUT (Mini Dólar), e fazer a cópia dos dados históricos para a área de transferência do Windows. Abrir em seguida o arquivo de texto do Histórico de Pregões e usar as teclas de atalho CTRL – A, CTRL – V e depois CTRL – S. O primeiro atalho de teclas marca todo o texto do arquivo, o segundo transfere o conteúdo da memória para o arquivo, e o terceiro salva o conteúdo novo. E em seguida ir no botão “Importar Dados Históricos” e fazer a importação do arquivo. Todo esse procedimento terá de ser feito antes do Mercado abrir.
+2 – Fazer a verificação das coordenadas do Mouse, sempre antes da abertura do Mercado. Se houver algum ponto errado na tela, corrija.
+3 – Pronto. Daí em diante o Robô cuidará das entradas e fechamentos das operações automaticamente.
+4 – É importante dizer que no gráfico da Plataforma eles colocam uma tarja azul para se referir ao mercado em Leilão, que é quando faltam alguns poucos minutos ara a abertura do Mercado. Em quanto a tarja azul estiver no cabeçalho do gráfico, as coordenadas estarão desreguladas. Assim que o Mercado for aberto, a tarja azul desaparece e se os pontos de calibragem do mouse se ajeitam automaticamente.
