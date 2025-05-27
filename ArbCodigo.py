@@ -1,3 +1,4 @@
+# INÍCIO: Importações
 import tkinter as tk
 from tkinter import ttk, messagebox
 import requests
@@ -15,7 +16,9 @@ from cryptography.hazmat.backends import default_backend
 import base64
 import pyperclip
 from datetime import datetime, timedelta
+# FIM: Importações
 
+# INÍCIO: Configuração de Som (pygame)
 try:
     import pygame
     pygame.mixer.init()
@@ -31,7 +34,9 @@ except ImportError:
     PROFIT_CHANNEL = None
     SPREAD_ATUAL_CHANNEL = None
     STARTUP_CHANNEL = None
+# FIM: Configuração de Som (pygame)
 
+# INÍCIO: Definição de Caminhos e URLs
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ALERT_SOUND_PATH = os.path.join(SCRIPT_DIR, "Alerta1.wav")
 EAGAINS_SOUND_PATH = os.path.join(SCRIPT_DIR, "Alerta2.wav")
@@ -40,7 +45,9 @@ CONFIG_FILE = os.path.join(SCRIPT_DIR, "config.json")
 VALIDATION_FILE = os.path.join(SCRIPT_DIR, "validated.key")
 
 GITHUB_LICENSE_URL = "https://raw.githubusercontent.com/Yaohusaf/Raz-o/main/Seriais.txt"
+# FIM: Definição de Caminhos e URLs
 
+# INÍCIO: Configuração da Janela Principal
 root = tk.Tk()
 root.title("Monitor de Arbitragem")
 root.geometry("800x600")
@@ -54,7 +61,9 @@ window_height = 600
 x_position = (screen_width - window_width) // 2
 y_position = (screen_height - window_height) // 2
 root.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
+# FIM: Configuração da Janela Principal
 
+# INÍCIO: URLs e Configurações de API
 api_spot_price = "https://api.mexc.com/api/v3/ticker/bookTicker"
 api_spot_volume = "https://api.mexc.com/api/v3/ticker/24hr"
 api_futures = "https://contract.mexc.com/api/v1/contract/ticker"
@@ -62,7 +71,9 @@ opportunities_base_url = "https://www.mexc.com/pt-PT/exchange/"
 
 SPOT_BASE_URL = "https://www.mexc.com/pt-PT/exchange/"
 FUTUROS_BASE_URL = "https://futures.mexc.com/pt-PT/exchange/"
+# FIM: URLs e Configurações de API
 
+# INÍCIO: Variáveis Padrão Globais
 tempo_atualizacao = 5000  
 min_spread_padrao = 0.5
 max_spread_padrao = 1.5
@@ -81,7 +92,9 @@ spread_atual_alert_minimo_padrao = 1.0
 advanced_topmost_padrao = False
 monitor_topmost_padrao = False
 inversion_window_minutes_padrao = 5  
+# FIM: Variáveis Padrão Globais
 
+# INÍCIO: Variáveis de Estado Globais
 top5_contagem = {}
 top5_start_time = None
 top5_tempo_minutos_segundos = top5_tempo_minutos_padrao * 60
@@ -114,7 +127,9 @@ last_fetch_time = None
 CACHE_DURATION = 2
 
 update_id = None
+# FIM: Variáveis de Estado Globais
 
+# INÍCIO: Função get_machine_ident
 def get_machine_ident():
     try:
         c = wmi.WMI()
@@ -138,14 +153,18 @@ def get_machine_ident():
     machine_hash = hashlib.sha256(combined).hexdigest()
     print(f"Hash da máquina gerado: {machine_hash}")
     return machine_hash
+# FIM: Função get_machine_ident
 
+# INÍCIO: Funções de Validação de Máquina
 def is_machine_validated():
     return os.path.exists(VALIDATION_FILE)
 
 def mark_machine_validated():
     with open(VALIDATION_FILE, 'w') as f:
         f.write(get_machine_ident())
+# FIM: Funções de Validação de Máquina
 
+# INÍCIO: Função check_github_license
 def check_github_license():
     try:
         response = requests.get(GITHUB_LICENSE_URL, timeout=5)
@@ -173,7 +192,9 @@ def check_github_license():
         print(f"Erro ao verificar a licença no GitHub: {e}")
         messagebox.showerror("Erro", f"Falha ao verificar a licença no GitHub: {e}")
         return False
+# FIM: Função check_github_license
 
+# INÍCIO: Funções de Criptografia
 def generate_key_password(password, salt=None):
     if salt is None:
         salt = os.urandom(16)
@@ -209,7 +230,9 @@ def save_encrypted_key(password):
     except Exception as e:
         print(f"Falha ao criar a chave: {e}")
         return None, str(e)
+# FIM: Funções de Criptografia
 
+# INÍCIO: Função verify_login
 def verify_login():
     if is_machine_validated():
         root.deiconify()
@@ -248,7 +271,9 @@ def verify_login():
 
     login_window.protocol("WM_DELETE_WINDOW", lambda: root.quit())
     root.withdraw()
+# FIM: Função verify_login
 
+# INÍCIO: Função salvar_configuracoes
 def salvar_configuracoes():
     global top5_start_time, top5_num_itens, top5_tempo_minutos_segundos, INVERSION_WINDOW, inversion_window_minutes, min_count_threshold, max_count_threshold
     config = {
@@ -290,7 +315,9 @@ def salvar_configuracoes():
         frame_top5.config(text=f"Top {top5_num_itens} Spreads mais Elevados")
     except Exception as e:
         print(f"Erro ao salvar configurações: {e}")
+# FIM: Função salvar_configuracoes
 
+# INÍCIO: Função carregar_configuracoes
 def carregar_configuracoes():
     global tempo_atualizacao, min_spread_padrao, max_spread_padrao, min_volume_padrao, max_volume_padrao, janela_no_topo_padrao, top5_tempo_minutos_padrao, top5_num_itens_padrao, monitor_tempo_atualizacao_padrao, monitor_position_right_padrao, monitor_position_left_padrao, profit_alert_minimo_padrao, spread_atual_alert_minimo_padrao, api_spot_price, api_spot_volume, api_futures, SPOT_BASE_URL, FUTUROS_BASE_URL, opportunities_base_url, advanced_topmost_padrao, monitor_topmost_padrao, inversion_window_minutes_padrao, inversion_window_minutes, INVERSION_WINDOW, min_count_threshold_padrao, max_count_threshold_padrao, min_count_threshold, max_count_threshold
     if not os.path.exists(CONFIG_FILE):
@@ -363,7 +390,9 @@ def carregar_configuracoes():
         "mexc_enabled": mexc_enabled_var.get(),
         "inversion_window_minutes": inversion_window_minutes
     }
+# FIM: Função carregar_configuracoes
 
+# INÍCIO: Funções Auxiliares de Formatação
 def formatar_volume(valor):
     try:
         valor = float(valor)
@@ -380,7 +409,9 @@ def formatar_tempo_regressivo(segundos):
     minutos = int(segundos // 60)
     segundos_restantes = int(segundos % 60)
     return f"Contagem ({minutos:02d}:{segundos_restantes:02d})"
+# FIM: Funções Auxiliares de Formatação
 
+# INÍCIO: Funções de Atualização de Interface
 def atualizar_data_hora():
     now = datetime.now()
     data_hora_atual = now.strftime("%d/%m/%y - %H:%M:%S")
@@ -396,7 +427,9 @@ def atualizar_contagem_regressiva():
     remaining_time = max(0, top5_tempo_minutos_segundos - elapsed_time)
     top5_tree.heading("#5", text=formatar_tempo_regressivo(remaining_time))
     root.after(1000, atualizar_contagem_regressiva)
+# FIM: Funções de Atualização de Interface
 
+# INÍCIO: Funções de Obtenção de Dados
 def obter_preco_spot():
     global api_spot_price, api_spot_volume
     try:
@@ -461,7 +494,9 @@ def obter_preco_futuros():
     except Exception as e:
         print(f"Erro ao obter dados Futuros: {e}")
         return {}
+# FIM: Funções de Obtenção de Dados
 
+# INÍCIO: Função calcular_inversoes
 def calcular_inversoes(ativo, current_time):
     if ativo not in spread_history:
         spread_history[ativo] = []
@@ -479,7 +514,9 @@ def calcular_inversoes(ativo, current_time):
         if (prev_spread >= 0 and curr_spread < 0) or (prev_spread < 0 and curr_spread >= 0):
             inversoes += 1
     return inversoes
+# FIM: Função calcular_inversoes
 
+# INÍCIO: Funções de Busca de Dados Assíncronas
 def fetch_data_async(callback):
     global cached_spot_data, cached_futuros_data, last_fetch_time
     def fetch():
@@ -516,7 +553,9 @@ def fetch_data_for_monitor():
         last_fetch_time = current_time
         return spot_data, futuros_data
     return cached_spot_data, cached_futuros_data
+# FIM: Funções de Busca de Dados Assíncronas
 
+# INÍCIO: Carregamento Inicial de Configurações
 config_inicial = carregar_configuracoes()
 top5_tempo_minutos = config_inicial["top5_tempo_minutos"]
 top5_num_itens = config_inicial["top5_num_itens"]
@@ -525,14 +564,18 @@ inversion_window_minutes = config_inicial["inversion_window_minutes"]
 INVERSION_WINDOW = timedelta(minutes=inversion_window_minutes)
 min_count_threshold = config_inicial["min_count_threshold"]
 max_count_threshold = config_inicial["max_count_threshold"]
+# FIM: Carregamento Inicial de Configurações
 
+# INÍCIO: Configuração do Notebook Principal
 notebook = ttk.Notebook(root)
 tab_scanner = ttk.Frame(notebook)
 tab_config = ttk.Frame(notebook)
 notebook.add(tab_scanner, text="Scanner")
 notebook.add(tab_config, text="Configurações Simples")
 notebook.pack(expand=True, fill="both")
+# FIM: Configuração do Notebook Principal
 
+# INÍCIO: Configuração de Estilos
 style = ttk.Style()
 style.configure("Modern.TFrame", background="#F8F9FA")
 style.configure("Modern.TLabelframe", background="#FFFFFF", foreground="#1A73E8", relief="flat")
@@ -549,13 +592,17 @@ style.configure("Modern.Treeview", font=("Segoe UI", 10), rowheight=25, fieldbac
 style.configure("Modern.Treeview.Heading", font=("Segoe UI", 11, "bold"), background="#E8F0FE", foreground="#1A73E8", bordercolor="#D3D3D3", relief="flat")
 style.map("Modern.Treeview", background=[('selected', '#E8F0FE')], foreground=[('selected', '#1A73E8')])
 style.map("Modern.Treeview.Heading", background=[('active', '#D3E3FD')])
+# FIM: Configuração de Estilos
 
+# INÍCIO: Aba Scanner - Frame Principal
 frame_scanner = ttk.Frame(tab_scanner, padding=20, style="Modern.TFrame")
 frame_scanner.pack(fill="both", expand=True)
 
 label_data_hora = ttk.Label(frame_scanner, text="27/05/25 - 01:12:00", font=("Segoe UI", 12, "bold"), foreground="#1A73E8", style="Modern.TLabel")
 label_data_hora.pack(anchor="nw", pady=(0, 10))
+# FIM: Aba Scanner - Frame Principal
 
+# INÍCIO: Aba Scanner - Lista de Ativos
 frame_tree = ttk.LabelFrame(frame_scanner, text="Lista de Ativos", padding=5, style="Modern.TLabelframe")
 frame_tree.pack(fill="both", expand=True)
 
@@ -575,7 +622,9 @@ tree.tag_configure("negative_funding", foreground="#FF0000")
 tree.tag_configure("mensagem", foreground="#1A73E8", font=("Segoe UI", 12, "italic"))
 tree.heading("Inversões", text=f"Inversões ({int(inversion_window_minutes)}m)")
 tree.pack(fill="both", expand=True)
+# FIM: Aba Scanner - Lista de Ativos
 
+# INÍCIO: Aba Scanner - Top 5 Spreads
 frame_top5 = ttk.LabelFrame(frame_scanner, text=f"Top {top5_num_itens} Spreads mais Elevados", padding=5, style="Modern.TLabelframe")
 frame_top5.pack(fill="both", pady=(5, 0))
 
@@ -588,7 +637,9 @@ top5_tree.tag_configure("negativo", foreground="#FF0000")
 top5_tree.tag_configure("positivo", foreground="#006400")
 top5_tree.heading("Inversões", text=f"Inversões ({int(inversion_window_minutes)}m)")
 top5_tree.pack(fill="both", expand=True)
+# FIM: Aba Scanner - Top 5 Spreads
 
+# INÍCIO: Função abrir_monitoramento_on_double_click
 def abrir_monitoramento_on_double_click(event, tree_widget):
     try:
         selected_item = tree_widget.selection()
@@ -600,10 +651,14 @@ def abrir_monitoramento_on_double_click(event, tree_widget):
         abrir_monitoramento()
     except Exception as e:
         print(f"Erro ao abrir monitoramento: {e}")
+# FIM: Função abrir_monitoramento_on_double_click
 
+# INÍCIO: Bind de Double-Click para Monitoramento
 tree.bind("<Double-1>", lambda e: abrir_monitoramento_on_double_click(e, tree))
 top5_tree.bind("<Double-1>", lambda e: abrir_monitoramento_on_double_click(e, top5_tree))
+# FIM: Bind de Double-Click para Monitoramento
 
+# INÍCIO: Função parar_som
 def parar_som():
     if SOUND_AVAILABLE:
         if SPREAD_CHANNEL.get_busy():
@@ -614,7 +669,9 @@ def parar_som():
             SPREAD_ATUAL_CHANNEL.stop()
         if STARTUP_CHANNEL.get_busy():
             STARTUP_CHANNEL.stop()
+# FIM: Função parar_som
 
+# INÍCIO: Função abrir_monitoramento
 def abrir_monitoramento():
     global monitor_window, spread_history
     if monitor_window is not None and monitor_window.winfo_exists():
@@ -983,7 +1040,9 @@ def abrir_monitoramento():
 
     monitor_window.protocol("WM_DELETE_WINDOW", lambda: [parar_som(), monitor_window.destroy()])
     atualizar_monitoramento()
+# FIM: Função abrir_monitoramento
 
+# INÍCIO: Função abrir_configuracoes_avancadas
 def abrir_configuracoes_avancadas():
     global advanced_config_window
     if advanced_config_window is not None and advanced_config_window.winfo_exists():
@@ -1075,7 +1134,9 @@ def abrir_configuracoes_avancadas():
     ttk.Button(frame_advanced, text="Salvar", command=salvar_configuracoes_avancadas, style="Modern.TButton").pack(anchor="w", padx=10, pady=10)
 
     advanced_config_window.protocol("WM_DELETE_WINDOW", lambda: advanced_config_window.destroy())
+# FIM: Função abrir_configuracoes_avancadas
 
+# INÍCIO: Aba Configurações Simples
 frame_config = ttk.Frame(tab_config, padding=20, style="Modern.TFrame")
 frame_config.pack(fill="both", expand=True)
 
@@ -1087,7 +1148,9 @@ config_notebook.add(tab_filtros, text="Filtros ⚙")
 config_notebook.add(tab_tempo, text="Tempo ⏱")
 config_notebook.add(tab_opcoes, text="Opções 🌐")
 config_notebook.pack(expand=True, fill="both")
+# FIM: Aba Configurações Simples
 
+# INÍCIO: Aba Configurações Simples - Filtros
 frame_filtros = ttk.LabelFrame(tab_filtros, text="Filtros de Mercado", padding=20, style="Modern.TLabelframe")
 frame_filtros.pack(padx=20, pady=20, fill="both", expand=True)
 
@@ -1126,7 +1189,9 @@ ttk.Label(frame_count_threshold, text="Máximo:", style="Modern.TLabel").pack(si
 entry_max_count_threshold = ttk.Entry(frame_count_threshold, width=10, style="Modern.TEntry")
 entry_max_count_threshold.pack(side="left", padx=5)
 entry_max_count_threshold.insert(0, str(config_inicial["max_count_threshold"]))
+# FIM: Aba Configurações Simples - Filtros
 
+# INÍCIO: Aba Configurações Simples - Tempo
 frame_tempo_config = ttk.LabelFrame(tab_tempo, text="Configurações de Tempo", padding=20, style="Modern.TLabelframe")
 frame_tempo_config.pack(padx=20, pady=20, fill="both", expand=True)
 
@@ -1149,7 +1214,9 @@ ttk.Label(frame_tempo_config, text="Janela de Inversões (minutos):", font=("Seg
 entry_inversion_window = ttk.Entry(frame_tempo_config, width=10, style="Modern.TEntry")
 entry_inversion_window.pack(anchor="w", padx=10, pady=5)
 entry_inversion_window.insert(0, str(config_inicial["inversion_window_minutes"]))
+# FIM: Aba Configurações Simples - Tempo
 
+# INÍCIO: Aba Configurações Simples - Opções
 frame_opcoes = ttk.LabelFrame(tab_opcoes, text="Opções Gerais", padding=20, style="Modern.TLabelframe")
 frame_opcoes.pack(padx=20, pady=20, fill="both", expand=True)
 
@@ -1160,7 +1227,9 @@ ttk.Checkbutton(frame_opcoes, text="MEXC Spot / MEXC Futures", variable=mexc_ena
 ttk.Button(frame_opcoes, text="Configurações Avançadas", command=abrir_configuracoes_avancadas, style="Modern.TButton").pack(anchor="w", pady=10)
 
 ttk.Button(frame_config, text="Salvar", command=lambda: salvar_configuracoes_simples(), style="Modern.TButton").pack(anchor="w", pady=20)
+# FIM: Aba Configurações Simples - Opções
 
+# INÍCIO: Função salvar_configuracoes_simples
 def salvar_configuracoes_simples():
     global min_spread_padrao, max_spread_padrao, min_volume_padrao, max_volume_padrao, tempo_atualizacao, top5_tempo_minutos, top5_num_itens, top5_tempo_minutos_segundos, top5_start_time, inversion_window_minutes, INVERSION_WINDOW, min_count_threshold, max_count_threshold
     try:
@@ -1185,17 +1254,9 @@ def salvar_configuracoes_simples():
         notebook.select(tab_scanner)
     except ValueError as e:
         print(f"Erro ao salvar configurações simples: {e}")
+# FIM: Função salvar_configuracoes_simples
 
-def gerenciar_atualizacao():
-    global update_id
-    if mexc_enabled_var.get():
-        if update_id is None:
-            atualizar()
-    else:
-        if update_id is not None:
-            root.after_cancel(update_id)
-            update_id = None
-
+# INÍCIO: Função atualizar_lista
 def atualizar_lista(spot_data, futuros_data):
     global spread_history
     current_time = datetime.now()
@@ -1211,152 +1272,147 @@ def atualizar_lista(spot_data, futuros_data):
         return
 
     if not spot_data or not futuros_data:
-        tree.insert("", "end", values=("Erro", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A"))
+        tree.insert("", "end", values=("Erro", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A"), tags=("mensagem",))
+        for item in top5_tree.get_children():
+            top5_tree.delete(item)
+        top5_tree.insert("", "end", values=("", "", "", "", "", ""))
         return
 
-    items = []
-    ativos_no_intervalo = set()  # Para rastrear quais ativos estão no intervalo de spread
+    ativos_comuns = set(spot_data.keys()) & set(futuros_data.keys())
+    if not ativos_comuns:
+        tree.insert("", "end", values=("Aviso", "Nenhum par em comum encontrado entre Spot e Futuros.", "", "", "", "", ""), tags=("mensagem",))
+        for item in top5_tree.get_children():
+            top5_tree.delete(item)
+        top5_tree.insert("", "end", values=("", "", "", "", "", ""))
+        return
 
-    for ativo in spot_data:
-        if ativo not in futuros_data:
-            continue
-
+    dados_spread = []
+    for ativo in ativos_comuns:
         spot_price = spot_data[ativo]["price"]
         futuros_price = futuros_data[ativo]["price"]
-        volume_spot = spot_data[ativo]["volume"]
-        volume_futuros = futuros_data[ativo]["volume"]
+        volume = spot_data[ativo]["volume"]
         funding_rate = futuros_data[ativo]["funding_rate"]
 
-        if spot_price == 0 or futuros_price == 0:
+        if spot_price <= 0 or volume <= 0:
             continue
 
         spread = ((futuros_price - spot_price) / spot_price) * 100
+        formatted_volume = formatar_volume(volume)
 
-        # Adicionar o spread ao histórico independentemente de estar no intervalo
         if ativo not in spread_history:
             spread_history[ativo] = []
         spread_history[ativo].append((current_time, spread))
-        # Manter apenas os spreads dentro da janela de inversões
-        spread_history[ativo] = [(t, s) for t, s in spread_history[ativo] if current_time - t <= INVERSION_WINDOW]
-
-        # Verificar se o spread está no intervalo definido
-        if not (min_spread_padrao <= spread <= max_spread_padrao):
-            # Se o ativo não está no intervalo, zerar a contagem
-            if ativo in top5_contagem:
-                top5_contagem[ativo] = [0, current_time]
-            continue
-
-        ativos_no_intervalo.add(ativo)
 
         inversoes = calcular_inversoes(ativo, current_time)
 
-        items.append({
-            "ativo": ativo,
-            "spot_price": spot_price,
-            "futuros_price": futuros_price,
-            "spread": spread,
-            "volume_spot": volume_spot,
-            "volume_futuros": volume_futuros,
-            "inversoes": inversoes,
-            "funding_rate": funding_rate
-        })
+        if (min_spread_padrao <= spread <= max_spread_padrao and
+            min_volume_padrao <= volume <= max_volume_padrao and
+            min_count_threshold <= inversoes <= max_count_threshold):
+            tags = ("positivo",) if spread >= 0 else ("negativo",)
+            funding_tags = ("negative_funding",) if funding_rate < 0 else ()
+            tree.insert("", "end", values=(
+                ativo,
+                f"{spot_price:.6f}",
+                f"{futuros_price:.6f}",
+                f"{spread:.2f}%",
+                formatted_volume,
+                inversoes,
+                f"{funding_rate}%"
+            ), tags=tags + funding_tags)
+            dados_spread.append((ativo, spread))
 
-    # Zerar a contagem de ativos que não estão mais no intervalo
-    for ativo in list(top5_contagem.keys()):
-        if ativo not in ativos_no_intervalo:
-            top5_contagem[ativo] = [0, current_time]
-
-    items.sort(key=lambda x: x["spread"], reverse=True)
-
-    for item in items:
-        tag = "positivo" if item["spread"] >= 0 else "negativo"
-        if item["funding_rate"] < 0:
-            tag = "negative_funding"
-        volume_display = f"{formatar_volume(item['volume_spot'])} / {formatar_volume(item['volume_futuros'])}"
-        tree.insert("", "end", values=(
-            item["ativo"],
-            f"{item['spot_price']:.6f}",
-            f"{item['futuros_price']:.6f}",
-            f"{item['spread']:.2f}%",
-            volume_display,
-            item["inversoes"],
-            f"{item['funding_rate']}%"
-        ), tags=(tag,))
-
-    atualizar_top5(items, current_time)
-
-def atualizar_top5(items, current_time):
-    global top5_contagem, top5_start_time, top5_tempo_minutos_segundos, MAX_COUNT_THRESHOLD
-
-    if top5_start_time is None:
-        top5_start_time = datetime.now()
-
-    elapsed_time = (current_time - top5_start_time).total_seconds()
-    if elapsed_time >= top5_tempo_minutos_segundos:
-        top5_contagem = {ativo: [cont, current_time] for ativo, (cont, last_time) in top5_contagem.items() if (current_time - last_time).total_seconds() <= INVERSION_WINDOW.total_seconds()}
-        top5_start_time = current_time
+    dados_spread.sort(key=lambda x: x[1], reverse=True)
+    top_spreads = dados_spread[:top5_num_itens]
 
     for item in top5_tree.get_children():
         top5_tree.delete(item)
 
-    if not items:
-        top5_tree.insert("", "end", values=("", "", "", "", "", ""))
-        return
-
-    # Filtrar ativos com volume dentro do intervalo (corrigido para evitar quebra de linha incorreta)
-    filtered_items = [item for item in items if min_volume_padrao <= item["volume_spot"] <= max_volume_padrao and min_volume_padrao <= item["volume_futuros"] <= max_volume_padrao]
-
-    # Ordenar por spread e pegar os top N
-    filtered_items.sort(key=lambda x: x["spread"], reverse=True)
-    top_items = filtered_items[:top5_num_itens]
-
-    for rank, item in enumerate(top_items, 1):
-        ativo = item["ativo"]
-        spread = item["spread"]
-        inversoes = item["inversoes"]
-
-        # Atualizar contagem
-        if ativo not in top5_contagem:
-            top5_contagem[ativo] = [0, current_time]
-        else:
+    for i, (ativo, spread) in enumerate(top_spreads, 1):
+        if ativo in top5_contagem:
             last_time = top5_contagem[ativo][1]
             elapsed = (current_time - last_time).total_seconds()
             top5_contagem[ativo][0] += elapsed
-            top5_contagem[ativo][0] += elapsed
-        top5_contagem[ativo][1] = current_time
+            top5_contagem[ativo][1] = current_time
+        else:
+            top5_contagem[ativo] = [0, current_time]
 
         contagem = top5_contagem[ativo][0]
-        if contagem > MAX_COUNT_THRESHOLD:
-            continue
-
-        tag = "positivo" if spread >= 0 else "negativo"
+        inversoes = calcular_inversoes(ativo, current_time)
+        tags = ("positivo",) if spread >= 0 else ("negativo",)
         top5_tree.insert("", "end", values=(
-            rank,
+            i,
             ativo,
             "MEXC Spot / MEXC Futuros",
             f"{spread:.2f}%",
             f"{int(contagem)}s",
             inversoes
-        ), tags=(tag,))
+        ), tags=tags)
+# FIM: Função atualizar_lista
 
+# INÍCIO: Função atualizar
 def atualizar():
     global update_id
-    fetch_data_async(atualizar_lista)
-    update_id = root.after(tempo_atualizacao, atualizar)
-
-# Tocar som de inicialização se disponível
-if SOUND_AVAILABLE:
     try:
-        startup_sound = pygame.mixer.Sound(STARTUP_SOUND_PATH)
-        STARTUP_CHANNEL.play(startup_sound)
+        fetch_data_async(atualizar_lista)
     except Exception as e:
-        print(f"Erro ao reproduzir som de inicialização: {e}")
+        print(f"Erro durante a atualização: {e}")
+        for item in tree.get_children():
+            tree.delete(item)
+        tree.insert("", "end", values=("Erro", "Falha ao atualizar dados.", "", "", "", "", ""), tags=("mensagem",))
+        for item in top5_tree.get_children():
+            top5_tree.delete(item)
+        top5_tree.insert("", "end", values=("", "", "", "", "", ""))
+    finally:
+        update_id = root.after(tempo_atualizacao, atualizar)
+# FIM: Função atualizar
 
-# Iniciar atualizações de interface
-atualizar_data_hora()
-atualizar_contagem_regressiva()
-verify_login()
-gerenciar_atualizacao()
+# INÍCIO: Função gerenciar_atualizacao
+def gerenciar_atualizacao():
+    global update_id
+    if mexc_enabled_var.get():
+        if update_id is None:
+            atualizar()
+    else:
+        if update_id is not None:
+            root.after_cancel(update_id)
+            update_id = None
+# FIM: Função gerenciar_atualizacao
 
-# Iniciar o loop principal
-root.mainloop()
+# INÍCIO: Função play_startup_sound
+def play_startup_sound():
+    if SOUND_AVAILABLE:
+        try:
+            startup_sound = pygame.mixer.Sound(STARTUP_SOUND_PATH)
+            STARTUP_CHANNEL.play(startup_sound)
+        except Exception as e:
+            print(f"Erro ao reproduzir som de inicialização: {e}")
+# FIM: Função play_startup_sound
+
+# INÍCIO: Função on_closing
+def on_closing():
+    global monitor_window, advanced_config_window
+    try:
+        if monitor_window is not None and monitor_window.winfo_exists():
+            monitor_window.destroy()
+        if advanced_config_window is not None and advanced_config_window.winfo_exists():
+            advanced_config_window.destroy()
+        root.destroy()
+    except Exception as e:
+        print(f"Erro ao fechar a aplicação: {e}")
+        root.destroy()
+# FIM: Função on_closing
+
+# INÍCIO: Inicialização e Loop Principal
+if __name__ == "__main__":
+    try:
+        verify_login()
+        atualizar_data_hora()
+        atualizar_contagem_regressiva()
+        play_startup_sound()
+        gerenciar_atualizacao()
+        root.protocol("WM_DELETE_WINDOW", on_closing)
+        root.mainloop()
+    except Exception as e:
+        print(f"Erro na inicialização da aplicação: {e}")
+        root.destroy()
+# FIM: Inicialização e Loop Principal
